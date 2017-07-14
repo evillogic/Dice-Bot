@@ -2,6 +2,10 @@ import discord
 import re
 from random import randint
 
+# Kaz Bishop
+# Apache License
+# https://github.com/EvilLogic/Dice-Bot
+
 client = discord.Client()
 
 token = 'INSERTBOTTOKENHERE'
@@ -51,7 +55,7 @@ async def on_message(message):
     dice = message.content.split(' ')
     for d in dice:
         d = roll(d)
-        msg = str(d).format(message)
+        msg = '{0.author.mention} '.format(message) + str(d)
         await client.send_message(message.channel, msg)
 
 @client.event
