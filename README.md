@@ -22,6 +22,6 @@ Math operators +, -, *, and / are also accepted
 The bot requires python3 and the discord.py library.
 After you install both, make a discord bot with a user over at
 https://discordapp.com/developers/docs/intro
-and give the bot a token on line 7.
+and give the bot a token on line 66, the last line.
 Now all that's left is to add the bot to your server. Copy the link above and replace the number after "id=" with your bot's Client ID.
 Have fun!

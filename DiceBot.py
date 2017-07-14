@@ -8,8 +8,6 @@ from random import randint
 
 client = discord.Client()
 
-token = 'INSERTBOTTOKENHERE'
-
 def roll(dice):
     print(dice)
     # list all matching dice operations
@@ -65,4 +63,4 @@ async def on_ready():
     print(client.user.id)
     print('------')
 
-client.run('token')
+client.run('INSERTBOTTOKENHERE')
