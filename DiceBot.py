@@ -1,5 +1,6 @@
 import discord
 import re
+import json
 from random import randint
 
 # Kaz Bishop
@@ -7,6 +8,12 @@ from random import randint
 # https://github.com/EvilLogic/Dice-Bot
 
 client = discord.Client()
+
+data = None
+
+if __name__ == "__main__":
+    with open('config.json') as json_data_file:
+        data = json.load(json_data_file)
 
 def roll(dice):
     print(dice)
@@ -33,7 +40,7 @@ async def on_message(message):
     # we do not want the bot to reply to itself
     # or to reply in a different channel
     # alpha should make the text ignored
-    if (message.channel.name != 'rolz' or
+    if (message.channel.name not in data['channels'] or
     message.author == client.user or
     message.content[0].isalpha()):
         return
@@ -63,4 +70,4 @@ async def on_ready():
     print(client.user.id)
     print('------')
 
-client.run('INSERTBOTTOKENHERE')
+client.run(data['token'])
