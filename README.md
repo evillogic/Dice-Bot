@@ -15,6 +15,7 @@ Any message in rolz will be treated as a dice command if it starts with a number
 3d6d6 will roll a d6 3d6 times<br />
 3d6+1 will roll 3d6 and add 1<br />
 3d6+1 20d20 will roll 3d6 and add 1, then roll 20d20 and output each as separate rolls<br />
+3r6 will roll 3d6 and reroll any ones once<br />
 
 Math operators +, -, *, and / are also accepted
 

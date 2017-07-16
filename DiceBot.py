@@ -18,21 +18,30 @@ if __name__ == "__main__":
 def roll(dice):
     print(dice)
     # list all matching dice operations
-    oplist = re.findall("[0-9]+[d\+\-\*\/][0-9]+", dice)
+    oplist = re.findall("[0-9]+[dr\+\-\*\/][0-9]+", dice)
     while len(oplist) >= 1:
         op = oplist[0]
         numsum = 0
         
+        # roll normally
         if 'd' in op:
             for i in range(0,int(op[0:op.find('d')])):
                 numsum += randint(1, int(op[op.find('d')+1:]))
+        # reroll ones
+        if 'r' in op:
+            for i in range(0,int(op[0:op.find('r')])):
+                num = randint(1, int(op[op.find('r')+1:]))
+                if num == 1:
+                    num = randint(1, int(op[op.find('r')+1:]))
+                numsum += num
+        # be a calculator
         if '+' in op or '-' in op or '*' in op or '/' in op:
             numsum = eval(op)
         
         # set dice to new num and recreate oplist
         dice = dice.replace(op, str(numsum), 1)
         print(dice)
-        oplist = re.findall("[0-9]+[d\+\-\*\/][0-9]+", dice)
+        oplist = re.findall("[0-9]+[dr\+\-\*\/][0-9]+", dice)
     return dice
 
 @client.event
